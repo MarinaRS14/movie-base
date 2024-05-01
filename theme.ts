@@ -1,6 +1,21 @@
 import { createTheme, CSSVariablesResolver, Button, rem } from '@mantine/core';
 
 export const theme = createTheme({
+  fontFamily: 'Inter, sans-serif',
+  headings: {
+    // // properties for all headings
+    // fontWeight: '400',
+    // fontFamily: 'Roboto',
+
+    // properties for individual headings, all of them are optional
+    sizes: {
+      h3: {
+        fontWeight: 'bold',
+        fontSize: rem(28),
+      },
+      h4: { fontSize: rem(20), fontWeight: 'bold' },
+    },
+  },
   other: {
     purple100: '#F2ECFA',
     purple200: '#E5D5FA',

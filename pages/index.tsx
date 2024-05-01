@@ -1,6 +1,6 @@
 import { MovieCard } from '@/components';
 import { ButtonMantine, Demo, Star } from '@/shared/ui';
-import { Button, Group } from '@mantine/core';
+import { Button, Group, Text, Title } from '@mantine/core';
 
 export default function IndexPage() {
   return (
