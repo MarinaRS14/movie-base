@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Input, Button, rem } from '@mantine/core';
+import { Input } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import style from './search.module.scss';
-import { ButtonMantine } from '../button';
+import { Button } from '../button';
 
 export const Demo = () => {
   const [value, setValue] = useState('');
@@ -17,7 +17,7 @@ export const Demo = () => {
         placeholder="Search movie title"
         radius="md"
         leftSection={<IconSearch size={16} />}
-        rightSection={<ButtonMantine title="Search" size="s" />}
+        rightSection={<Button title="Search" size="s" />}
         rightSectionWidth={112}
         classNames={style}
         rightSectionPointerEvents="all"

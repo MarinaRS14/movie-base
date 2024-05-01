@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core';
+import { Button as ButtonMantine } from '@mantine/core';
 import style from './button.module.scss';
 import { ButtonHTMLAttributes, ComponentPropsWithoutRef } from 'react';
 
@@ -10,7 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export const ButtonMantine = ({
+export const Button = ({
   variant = 'filled',
   title,
   size = 'm',
@@ -19,7 +19,7 @@ export const ButtonMantine = ({
   ...props
 }: ButtonProps) => {
   return (
-    <Button
+    <ButtonMantine
       {...props}
       variant={variant}
       size={size}
@@ -28,6 +28,6 @@ export const ButtonMantine = ({
       disabled={disabled}
       className={style.button}>
       {title}
-    </Button>
+    </ButtonMantine>
   );
 };
