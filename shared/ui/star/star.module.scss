@@ -2,5 +2,6 @@
     &:disabled,
     &[data-disabled] {
       background-color: transparent;
+      cursor: default;
     }
-}
+  }

@@ -1,4 +1,4 @@
-import { createTheme, CSSVariablesResolver } from '@mantine/core';
+import { createTheme, CSSVariablesResolver, Button, rem } from '@mantine/core';
 
 export const theme = createTheme({
   other: {
@@ -18,6 +18,34 @@ export const theme = createTheme({
     black: '#232134',
 
     yellow: '#FAB005',
+  },
+
+  components: {
+    Button: Button.extend({
+      vars: (theme, props) => {
+        if (props.size === 'm') {
+          return {
+            root: {
+              '--button-height': rem(40),
+              '--button-padding-x': rem(20),
+              '--button-fz': rem(14),
+            },
+          };
+        }
+
+        if (props.size === 's') {
+          return {
+            root: {
+              '--button-height': rem(32),
+              '--button-padding-x': rem(20),
+              '--button-fz': rem(14),
+            },
+          };
+        }
+
+        return { root: {} };
+      },
+    }),
   },
 });
 
