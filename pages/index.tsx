@@ -1,5 +1,5 @@
 import { MovieCard } from '@/components';
-import { ButtonMantine, Demo, Star } from '@/shared/ui';
+import { ButtonMantine, Demo, RatingStars, Star } from '@/shared/ui';
 import { Button, Group, Text, Title } from '@mantine/core';
 
 export default function IndexPage() {
@@ -11,8 +11,9 @@ export default function IndexPage() {
       {/* <Demo /> */}
       {/* <ButtonMantine title={'some text'} size="s" color="var(--color-purple-400)" /> */}
       {/* <Star text="fffff" color="var(--color-yellow)" /> */}
-      <MovieCard />
-      <MovieCard />
+      {/* <MovieCard large /> */}
+      {/* <MovieCard /> */}
+      <RatingStars />
     </Group>
   );
 }

@@ -4,14 +4,26 @@ import Poster from '../../assets/img/poster.svg';
 import NextImage from 'next/image';
 import { Star } from '@/shared/ui';
 
-export const MovieCard = () => {
+type CardProps = {
+  large?: boolean;
+};
+
+export const MovieCard = (props: CardProps) => {
+  const { large } = props;
+
+  const small = { height: 170, width: 119 };
+  const big = { height: 352, width: 250 };
+
+  const height = large ? big.height : small.height;
+  const width = large ? big.width : small.width;
+
   return (
     <>
       <Card shadow="sm" padding="lg" radius="md">
         <Group justify="space-between">
-          <Image component={NextImage} h={170} w={119} src={Poster} alt="poster" />
+          <Image component={NextImage} h={height} w={width} src={Poster} alt="poster" />
 
-          <Stack align="flex-start" justify="space-between" h={170}>
+          <Stack align="flex-start" justify="space-between" h={height}>
             <Flex direction="column" align="flex-start">
               <Text c="var(--color-purple-main)" fw={600} size="xl">
                 The Green Mile
@@ -23,13 +35,38 @@ export const MovieCard = () => {
               </Group>
             </Flex>
 
-            <Group justify="space-between" gap={8}>
-              <Text c="var(--color-grey-600)">Genres</Text>
-              <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-            </Group>
+            {large ? (
+              <Flex direction="column">
+                <Group justify="space-between" gap={8}>
+                  <Text c="var(--color-grey-600)">Genres</Text>
+                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                </Group>
+                <Group justify="space-between" gap={8}>
+                  <Text c="var(--color-grey-600)">Genres</Text>
+                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                </Group>
+                <Group justify="space-between" gap={8}>
+                  <Text c="var(--color-grey-600)">Genres</Text>
+                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                </Group>
+                <Group justify="space-between" gap={8}>
+                  <Text c="var(--color-grey-600)">Genres</Text>
+                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                </Group>
+                <Group justify="space-between" gap={8}>
+                  <Text c="var(--color-grey-600)">Genres</Text>
+                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                </Group>
+              </Flex>
+            ) : (
+              <Group justify="space-between" gap={8}>
+                <Text c="var(--color-grey-600)">Genres</Text>
+                <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+              </Group>
+            )}
           </Stack>
 
-          <Stack h={170} align="center" justify="flex-start" gap="md">
+          <Stack h={height} align="center" justify="flex-start" gap="md">
             <Star />
           </Stack>
         </Group>
