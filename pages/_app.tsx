@@ -2,8 +2,20 @@ import '@mantine/core/styles.css';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import { theme, resolver } from '../theme';
+import { ReactElement, ReactNode } from 'react';
+import { NextPage } from 'next';
+import { AppProps } from 'next/app';
+import { getLayout } from '@/components/layout/layout';
 
-export default function App({ Component, pageProps }: any) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <MantineProvider theme={theme} cssVariablesResolver={resolver}>
       <Head>
@@ -14,7 +26,7 @@ export default function App({ Component, pageProps }: any) {
         />
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </MantineProvider>
   );
 }
