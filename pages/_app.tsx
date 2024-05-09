@@ -2,20 +2,14 @@ import '@mantine/core/styles.css';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import { theme, resolver } from '../theme';
-import { ReactElement, ReactNode } from 'react';
-import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import { getLayout } from '@/components/layout/layout';
+import { Layout } from '@/components/layout/layout';
+import { useRouter } from 'next/router';
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  console.log(router.pathname);
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <MantineProvider theme={theme} cssVariablesResolver={resolver}>
       <Head>
@@ -26,7 +20,17 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         />
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>
-      {getLayout(<Component {...pageProps} />)}
+      {/* {getLayout(<Component {...pageProps} />)} */}
+
+      {router.pathname === '/movies' || router.pathname === '/rated-movies' ? (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      ) : (
+        <Layout disabled>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </MantineProvider>
   );
 }
