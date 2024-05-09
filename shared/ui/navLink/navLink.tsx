@@ -1,9 +1,10 @@
 import { Box, Button } from '@mantine/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './navLink.module.scss';
 
 import Link from 'next/link';
 import { NavLink as NavLinkMantine } from '@mantine/core';
+import { useRouter } from 'next/router';
 
 type LinkType = {
   label: string;
@@ -11,27 +12,25 @@ type LinkType = {
   disabled?: boolean;
 };
 
-interface NavLinkProps {
-  data: LinkType[];
-}
+export const NavigateLink = (props: LinkType) => {
+  const { label, link, disabled = false } = props;
 
-export const NavLink = (props: NavLinkProps) => {
-  const { data } = props;
+  const router = useRouter();
 
-  const [active, setActive] = useState(0);
+  const activeRoute = router.pathname.slice(1);
 
-  const items = data.map((item, index) => (
+  const [active, setActive] = useState<boolean>(false);
+
+  return (
     <NavLinkMantine
       component={Link}
-      href={item.link}
-      key={item.label}
-      active={index === active}
-      label={item.label}
-      onClick={() => setActive(index)}
+      href={link}
+      key={label}
+      active={activeRoute === link}
+      label={label}
+      onClick={() => setActive(true)}
       className={style.navlink}
-      disabled={item.disabled}
+      disabled={disabled}
     />
-  ));
-
-  return <Box c={'var(--color-black)'}>{items}</Box>;
+  );
 };

@@ -1,4 +1,4 @@
-import { LogoHeader, NavLink } from '@/shared/ui';
+import { LogoHeader, NavigateLink } from '@/shared/ui';
 import { AppShell, Burger, Flex } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
@@ -48,12 +48,8 @@ export const Layout: FC<MyProps> = (props) => {
             <LogoHeader />
           </Flex>
 
-          <NavLink
-            data={[
-              { label: 'Movies', link: 'movies' },
-              { label: 'Rated movies', link: 'rated-movies' },
-            ]}
-          />
+          <NavigateLink label="Movies" link="movies" />
+          <NavigateLink label="Rated movies" link="rated-movies" />
         </AppShell.Navbar>
 
         <AppShell.Main>{children}</AppShell.Main>

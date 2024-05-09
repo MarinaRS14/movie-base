@@ -27,6 +27,3 @@ export default function NotFound() {
     </Container>
   );
 }
-
-// NotFound.getLayout = getEmptyLayout;
-// export default NotFound;

@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <MantineProvider theme={theme} cssVariablesResolver={resolver}>
@@ -20,7 +19,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>
-      {/* {getLayout(<Component {...pageProps} />)} */}
 
       {router.pathname === '/movies' || router.pathname === '/rated-movies' ? (
         <Layout>
