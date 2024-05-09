@@ -1,7 +1,10 @@
+import { EmptyState } from '@/components/emptyState/emptyState';
 import React from 'react';
 
-const RatedMovies = () => {
-  return <div>RatedMovies</div>;
-};
-
-export default RatedMovies;
+export default function RatedMovies() {
+  return (
+    <>
+      <EmptyState />
+    </>
+  );
+}
