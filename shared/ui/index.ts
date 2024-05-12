@@ -5,3 +5,4 @@ export * from './rating';
 export * from './sidebar';
 export * from './navLink';
 export * from './logo';
+export * from './select';

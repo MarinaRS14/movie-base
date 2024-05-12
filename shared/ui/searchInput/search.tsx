@@ -4,10 +4,8 @@ import { IconSearch } from '@tabler/icons-react';
 import style from './search.module.scss';
 import { Button } from '../button';
 
-export const Demo = () => {
+export const Search = () => {
   const [value, setValue] = useState('');
-
-  console.log(value);
 
   return (
     <div className={style.container}>
