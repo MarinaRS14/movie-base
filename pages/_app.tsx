@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="/favicon.ico?" />
       </Head>
 
-      {router.pathname === '/movies' || router.pathname === '/rated-movies' ? (
+      {router.pathname.startsWith('/movies') || router.pathname === '/rated-movies' ? (
         <Layout>
           <Component {...pageProps} />
         </Layout>

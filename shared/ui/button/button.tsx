@@ -8,6 +8,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: string;
   color?: 'var(--color-purple-main)' | 'var(--color-purple-400)' | 'var(--color-purple-600)';
   disabled?: boolean;
+  pl?: number;
+  pr?: number;
+  pt?: number;
+  pb?: number;
 }
 
 export const Button = ({
@@ -16,6 +20,10 @@ export const Button = ({
   size = 'm',
   color = 'var(--color-purple-main)',
   disabled = false,
+  pl,
+  pr,
+  pt,
+  pb,
   ...props
 }: ButtonProps) => {
   return (
@@ -26,7 +34,11 @@ export const Button = ({
       color={color}
       radius="md"
       disabled={disabled}
-      className={style.button}>
+      className={style.button}
+      pl={pl}
+      pr={pr}
+      pt={pt}
+      pb={pb}>
       {title}
     </ButtonMantine>
   );

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { ActionIcon, rem, VisuallyHidden, Text, Group } from '@mantine/core';
+import { ActionIcon, rem, VisuallyHidden, Text, Group, Flex } from '@mantine/core';
 import { IconStarFilled } from '@tabler/icons-react';
 import style from './star.module.scss';
 
 type StarProps = {
   color?: string;
-  text?: string;
+  rating?: number | null;
 };
 
 export const Star = (props: StarProps) => {
-  const { color = 'var(--color-grey-300)', text } = props;
+  const { color = 'var(--color-grey-300)', rating } = props;
 
   const [fav, setFav] = useState<boolean>(false);
 
   return (
-    <Group justify="space-between" gap={4}>
+    <Flex justify="space-between" gap={4}>
       <ActionIcon
         variant="transparent"
         aria-label="favorite"
@@ -27,7 +27,11 @@ export const Star = (props: StarProps) => {
         />
         <VisuallyHidden>Like movie</VisuallyHidden>
       </ActionIcon>
-      {text && <Text fw={700}>{text}</Text>}
-    </Group>
+      {rating && (
+        <Text fw={700} p={3}>
+          {rating}
+        </Text>
+      )}
+    </Flex>
   );
 };

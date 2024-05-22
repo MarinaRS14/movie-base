@@ -1,0 +1,16 @@
+.label {
+    font-weight: bold;
+}
+
+.control {
+    svg {
+    color: var(--color-grey-500);
+    }
+}
+
+.input {
+    background-color: white;
+    border: 1px solid var(--color-grey-300);
+    border-radius: 8px;
+}
+

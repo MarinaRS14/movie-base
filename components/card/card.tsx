@@ -1,15 +1,33 @@
 import React from 'react';
-import { Card, Image, Text, Badge, Button, Group, Flex, Stack } from '@mantine/core';
+import {
+  Card,
+  Image,
+  Text,
+  Badge,
+  Button,
+  Group,
+  Flex,
+  Stack,
+  Container,
+  SimpleGrid,
+  Grid,
+} from '@mantine/core';
 import Poster from '../../assets/img/poster.svg';
 import NextImage from 'next/image';
 import { Star } from '@/shared/ui';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '../modal';
+import { ResponseType } from '@/pages/movies';
 
 type CardProps = {
   large?: boolean;
+  movie: ResponseType;
 };
 
 export const MovieCard = (props: CardProps) => {
-  const { large } = props;
+  const { large, movie } = props;
+
+  // console.log(movie);
 
   const small = { height: 170, width: 119 };
   const big = { height: 352, width: 250 };
@@ -20,56 +38,65 @@ export const MovieCard = (props: CardProps) => {
   return (
     <>
       <Card shadow="sm" padding="lg" radius="md">
-        <Group justify="space-between">
-          <Image component={NextImage} h={height} w={width} src={Poster} alt="poster" />
+        <Card.Section inheritPadding pt={'sm'} pb={'sm'}>
+          <Flex gap="sm">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${movie.poster_path}`}
+              width={width}
+              height={height}
+            />
+            <Container p={0} style={{ width: '100%' }}>
+              <Stack justify="space-between" h={height}>
+                <div>
+                  <Text c="var(--color-purple-main)" fw={600} size="xl">
+                    {movie.title}
+                  </Text>
+                  <Text c="var(--color-grey-600)" fz={16}>
+                    {movie.release_date.substring(0, 4)}
+                  </Text>
+                  <Group gap={8}>
+                    <Star rating={+movie.vote_average.toFixed(1)} color="var(--color-yellow)" />
+                    <Text c="var(--color-grey-600)">{`${(movie.popularity / 1000).toFixed(
+                      1,
+                    )}M`}</Text>
+                  </Group>
+                </div>
 
-          <Stack align="flex-start" justify="space-between" h={height}>
-            <Flex direction="column" align="flex-start">
-              <Text c="var(--color-purple-main)" fw={600} size="xl">
-                The Green Mile
-              </Text>
-              <Text c="var(--color-grey-600)">1990</Text>
-              <Group justify="space-between" gap={8}>
-                <Star text="9.3" color="var(--color-yellow)" />
-                <Text c="var(--color-grey-600)">(2.9M)</Text>
-              </Group>
-            </Flex>
+                {large ? (
+                  <Flex direction="column">
+                    <Group justify="space-between" gap={8}>
+                      <Text c="var(--color-grey-600)">Genres</Text>
+                      <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                    </Group>
+                    <Group justify="space-between" gap={8}>
+                      <Text c="var(--color-grey-600)">Genres</Text>
+                      <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                    </Group>
+                    <Group justify="space-between" gap={8}>
+                      <Text c="var(--color-grey-600)">Genres</Text>
+                      <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                    </Group>
+                    <Group justify="space-between" gap={8}>
+                      <Text c="var(--color-grey-600)">Genres</Text>
+                      <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                    </Group>
+                    <Group justify="space-between" gap={8}>
+                      <Text c="var(--color-grey-600)">Genres</Text>
+                      <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                    </Group>
+                  </Flex>
+                ) : (
+                  <Group justify="space-between" gap={8}>
+                    <Text c="var(--color-grey-600)">Genres</Text>
+                    <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
+                  </Group>
+                )}
+              </Stack>
+            </Container>
 
-            {large ? (
-              <Flex direction="column">
-                <Group justify="space-between" gap={8}>
-                  <Text c="var(--color-grey-600)">Genres</Text>
-                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-                </Group>
-                <Group justify="space-between" gap={8}>
-                  <Text c="var(--color-grey-600)">Genres</Text>
-                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-                </Group>
-                <Group justify="space-between" gap={8}>
-                  <Text c="var(--color-grey-600)">Genres</Text>
-                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-                </Group>
-                <Group justify="space-between" gap={8}>
-                  <Text c="var(--color-grey-600)">Genres</Text>
-                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-                </Group>
-                <Group justify="space-between" gap={8}>
-                  <Text c="var(--color-grey-600)">Genres</Text>
-                  <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-                </Group>
-              </Flex>
-            ) : (
-              <Group justify="space-between" gap={8}>
-                <Text c="var(--color-grey-600)">Genres</Text>
-                <Text c="var(--color-black)">Drama, Crime, Fantasy</Text>
-              </Group>
-            )}
-          </Stack>
-
-          <Stack h={height} align="center" justify="flex-start" gap="md">
-            <Star />
-          </Stack>
-        </Group>
+            <Badge component={Modal} />
+          </Flex>
+        </Card.Section>
       </Card>
     </>
   );

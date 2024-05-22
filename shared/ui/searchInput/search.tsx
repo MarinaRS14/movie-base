@@ -8,18 +8,18 @@ export const Search = () => {
   const [value, setValue] = useState('');
 
   return (
-    <div className={style.container}>
-      <Input
-        value={value}
-        onChange={(event) => setValue(event.currentTarget.value)}
-        placeholder="Search movie title"
-        radius="md"
-        leftSection={<IconSearch size={16} />}
-        rightSection={<Button title="Search" size="s" />}
-        rightSectionWidth={112}
-        classNames={style}
-        rightSectionPointerEvents="all"
-      />
-    </div>
+    // <div className={style.container}>
+    <Input
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
+      placeholder="Search movie title"
+      radius="md"
+      leftSection={<IconSearch size={16} />}
+      rightSection={<Button title="Search" size="s" />}
+      rightSectionWidth={112}
+      classNames={style}
+      rightSectionPointerEvents="all"
+    />
+    // </div>
   );
 };

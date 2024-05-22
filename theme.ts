@@ -85,6 +85,7 @@ export const resolver: CSSVariablesResolver = (theme) => ({
   },
   light: {
     // '--mantine-color-deep-orange': theme.other.deepOrangeLight,
+    '--input-bd-focus': 'var(--color-purple-main',
   },
   dark: {
     // '--mantine-color-deep-orange': theme.other.deepOrangeDark,
